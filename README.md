@@ -9,6 +9,7 @@ Configuration:
 7. v1.0.7 - Installed Cypress
 8. v1.0.8 - Added Cypress e2e tests for login/logout with token checks.
 9. v1.0.9 - Added unit & e2e workflows
+10. v1.0.10 - Changed login cy, to search for logout button, moved mocks to src folder. Created README.md
 
 [![Automated E2E Testing](https://github.com/mndgs1/workflow-ca/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/mndgs1/workflow-ca/actions/workflows/e2e-test.yml)
 
