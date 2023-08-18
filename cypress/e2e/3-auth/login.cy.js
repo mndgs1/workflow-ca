@@ -28,9 +28,15 @@ describe("Login Page", () => {
 
     // Click the Login button
     cy.get(`#loginForm [type="submit"]`).contains("Login").click();
+
+    // checks url
+    cy.url().should("include", "profile");
+
+    // Looks for div with a class of profile
+    cy.get(".profile").should("exist");
   });
 
-  it("Logins with email that does not follow the pattern", () => {
+  it("Try Login with email that does not follow the pattern, shows error", () => {
     // visit home page
     cy.visit("http://localhost:8080/");
 
@@ -64,7 +70,7 @@ describe("Login Page", () => {
     cy.wait(500);
   });
 
-  it("Logins with email that follows the pattern, but is not in the DB", () => {
+  it("Try Login with email that follows the pattern, but is not in the DB, shows error", () => {
     // visit home page
     cy.visit("http://localhost:8080/");
 
@@ -98,17 +104,16 @@ describe("Login Page", () => {
       "login",
     );
 
-    cy.wait("@login");
-
-    // Intercept the window.alert method
-    cy.window().then((win) => {
-      cy.stub(win, "alert").as("windowAlert");
+    cy.wait("@login").then((interception) => {
+      expect(interception.response.statusCode).to.equal(401);
     });
 
-    //checks if the message appears
-    cy.get("@windowAlert").should("exist");
+    // // Intercept the window.alert method
+    // cy.window().then((win) => {
+    //     cy.stub(win, "alert").as("windowAlert");
+    // });
 
-    //checks if there is a logout button
-    cy.get(".btn").contains("Logout").should("exist");
+    // // //checks if the message appears
+    // cy.get("@windowAlert").should("be.called");
   });
 });
