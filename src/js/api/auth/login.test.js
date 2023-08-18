@@ -9,9 +9,10 @@ const mockFetchSuccess = jest.fn().mockResolvedValue({
   json: jest.fn().mockResolvedValue(USER_DATA),
 });
 
-global.localStorage = localStorageMock;
-
-global.fetch = mockFetchSuccess;
+beforeAll(() => {
+    global.localStorage = localStorageMock;
+    global.fetch = mockFetchSuccess;
+  });
 
 describe("login", () => {
   it("returns a user object if the call is successful", async () => {
