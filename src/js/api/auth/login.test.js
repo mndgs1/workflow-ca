@@ -1,8 +1,6 @@
 import { login } from "./login.js";
 import localStorageMock from "../../../../mocks/localStorage.mock.js";
-import userMock from "../../../../mocks/user.mock.js";
-
-const USER_DATA = userMock;
+import USER_DATA from "../../../../mocks/user.mock.js";
 
 const mockFetchSuccess = jest.fn().mockResolvedValue({
   ok: true,
