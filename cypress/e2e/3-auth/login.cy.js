@@ -107,5 +107,8 @@ describe("Login Page", () => {
 
     //checks if the message appears
     cy.get("@windowAlert").should("exist");
+
+    //checks if there is a logout button
+    cy.get(".btn").contains("Logout").should("exist");
   });
 });

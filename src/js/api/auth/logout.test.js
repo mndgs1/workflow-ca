@@ -1,9 +1,9 @@
 import { logout } from "./logout";
-import localStorageMock from "../../../../mocks/localStorage.mock";
+import localStorageMock from "../../../mocks/localStorage.mock.js";
 
 beforeAll(() => {
-    global.localStorage = localStorageMock;
-  });
+  global.localStorage = localStorageMock;
+});
 
 describe("logout", () => {
   it("deletes the token from the browser storage", () => {

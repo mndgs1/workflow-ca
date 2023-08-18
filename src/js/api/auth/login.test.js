@@ -1,6 +1,6 @@
 import { login } from "./login.js";
-import localStorageMock from "../../../../mocks/localStorage.mock.js";
-import USER_DATA from "../../../../mocks/user.mock.js";
+import localStorageMock from "../../../mocks/localStorage.mock.js";
+import USER_DATA from "../../../mocks/user.mock.js";
 
 const mockFetchSuccess = jest.fn().mockResolvedValue({
   ok: true,
@@ -8,9 +8,9 @@ const mockFetchSuccess = jest.fn().mockResolvedValue({
 });
 
 beforeAll(() => {
-    global.localStorage = localStorageMock;
-    global.fetch = mockFetchSuccess;
-  });
+  global.localStorage = localStorageMock;
+  global.fetch = mockFetchSuccess;
+});
 
 describe("login", () => {
   it("returns a user object if the call is successful", async () => {
